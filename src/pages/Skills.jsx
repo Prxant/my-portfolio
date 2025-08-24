@@ -1,87 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FiCode, 
-  FiDatabase, 
-  FiServer, 
-  FiSmartphone, 
-  FiTool, 
-  FiCloud,
+import {
+  FiCode,
+  FiDatabase,
+  FiServer,
   FiGitBranch,
   FiMonitor
 } from 'react-icons/fi';
 
 const Skills = () => {
   const skills = [
-    {
-      name: 'React',
-      icon: <FiCode className="w-8 h-8" />,
-      level: 95,
-      description: 'Building modern, interactive user interfaces',
-      category: 'Frontend'
-    },
-    {
-      name: 'Node.js',
-      icon: <FiServer className="w-8 h-8" />,
-      level: 90,
-      description: 'Server-side JavaScript development',
-      category: 'Backend'
-    },
-    {
-      name: 'javaScript',
-      icon: <FiCode className="w-8 h-8" />,
-      level: 88,
-      description: 'JavaScript development',
-      category: 'Frontend'
-    },
-    {
-      name: 'MongoDB',
-      icon: <FiDatabase className="w-8 h-8" />,
-      level: 85,
-      description: 'NoSQL database design and optimization',
-      category: 'Database'
-    },
-    {
-      name: 'MySQL',
-      icon: <FiDatabase className="w-8 h-8" />,
-      level: 82,
-      description: 'Relational database management',
-      category: 'Database'
-    },
-    {
-      name: 'Express.js',
-      icon: <FiServer className="w-8 h-8" />,
-      level: 90,
-      description: 'RESTful API development',
-      category: 'Backend'
-    },
-   
-  
-    
-    {
-      name: 'Git',
-      icon: <FiGitBranch className="w-8 h-8" />,
-      level: 92,
-      description: 'Version control and collaboration',
-      category: 'Tools'
-    },
-    {
-      name: 'HTML/CSS',
-      icon: <FiMonitor className="w-8 h-8" />,
-      level: 95,
-      description: 'Web design and layout',
-      category: 'Frontend'
-    }
+    { name: 'React', icon: <FiCode className="w-8 h-8" />, level: 95, description: 'Building modern, interactive user interfaces', category: 'Frontend' },
+    { name: 'Node.js', icon: <FiServer className="w-8 h-8" />, level: 90, description: 'Server-side JavaScript development', category: 'Backend' },
+    { name: 'JavaScript', icon: <FiCode className="w-8 h-8" />, level: 88, description: 'Core language proficiency', category: 'Frontend' },
+    { name: 'MongoDB', icon: <FiDatabase className="w-8 h-8" />, level: 85, description: 'NoSQL database design', category: 'Database' },
+    { name: 'MySQL', icon: <FiDatabase className="w-8 h-8" />, level: 82, description: 'Relational database management', category: 'Database' },
+    { name: 'Express.js', icon: <FiServer className="w-8 h-8" />, level: 90, description: 'RESTful API development', category: 'Backend' },
+    { name: 'Git', icon: <FiGitBranch className="w-8 h-8" />, level: 92, description: 'Version control and collaboration', category: 'Tools' },
+    { name: 'HTML/CSS', icon: <FiMonitor className="w-8 h-8" />, level: 95, description: 'Web design and layout', category: 'Frontend' }
   ];
 
-  const categories = Array.from(new Set(skills.map(skill => skill.category)));
+  const categories = ['Frontend', 'Backend', 'Database', 'Tools'];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
         staggerChildren: 0.1
       }
     }
@@ -105,10 +50,10 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          {/* Adjusted font sizes for mobile */}
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Skills & Technologies</h1>
-          <p className="text-xl text-base-content/70 max-w-3xl mx-auto">
-            A comprehensive overview of my technical skills and proficiency levels 
-            across various technologies and frameworks.
+          <p className="text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto">
+            A comprehensive overview of my technical skills and proficiency levels.
           </p>
         </motion.div>
 
@@ -122,7 +67,7 @@ const Skills = () => {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 text-center text-primary">
+            <h2 className="text-3xl font-bold mb-8 text-center text-primary">
               {category}
             </h2>
             
@@ -131,11 +76,12 @@ const Skills = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+              // Responsive Grid: 1 column on mobile, 2 on medium, 3 on large screens
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {skills
                 .filter(skill => skill.category === category)
-                .map((skill, index) => (
+                .map((skill) => (
                   <motion.div
                     key={skill.name}
                     variants={itemVariants}
@@ -188,7 +134,7 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-2xl font-bold mb-8">Other Skills</h2>
+          <h2 className="text-3xl font-bold mb-8">Other Skills</h2>
           <div className="flex flex-wrap justify-center gap-4">
             {[
               'Vite', 'Tailwind CSS',

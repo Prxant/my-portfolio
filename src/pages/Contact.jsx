@@ -29,12 +29,10 @@ const Contact = () => {
     setStatus({ type: 'loading', message: 'Sending message...' });
 
     try {
-      // Replace with your actual backend URL
-     const response = await axios.post(
-  'https://portfolio-backend-9b8r.onrender.com/api/contact', // Use your live Render URL
-  formData
-);
-      
+      const response = await axios.post(
+        'https://portfolio-backend-9b8r.onrender.com/api/contact',
+        formData
+      );
       
       if (response.data.success) {
         setStatus({
@@ -62,13 +60,13 @@ const Contact = () => {
       icon: <FiPhone className="w-6 h-6" />,
       title: 'Phone',
       value: '7906843716',
-      link: 'tel:+15551234567'
+      link: 'tel:+917906843716'
     },
     {
       icon: <FiMapPin className="w-6 h-6" />,
       title: 'Location',
       value: 'Lucknow, India',
-      link: 'http://google.com/maps/place/Babu+Banarasi+Das+University/@26.8887317,81.0564255,739m/data=!3m2!1e3!4b1!4m6!3m5!1s0x399be209f58895a1:0x8328acaa3eddd4f!8m2!3d26.8887269!4d81.0590004!16s%2Fm%2F03crm8n?entry=ttu&g_ep=EgoyMDI1MDcyOC4wIKXMDSoASAFQAw%3D%3D'
+      link: 'https://www.google.com/maps/place/Babu+Banarasi+Das+University'
     }
   ];
 
@@ -82,14 +80,16 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          {/* Adjusted font size for mobile */}
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Let's Work Together</h1>
-          <p className="text-xl text-base-content/70 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto">
             Have a project in mind or just want to chat about technology? 
             I'd love to hear from you. Let's create something amazing together!
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        {/* Main Layout: Stacks on mobile, two columns on large screens */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -101,8 +101,7 @@ const Contact = () => {
               <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
               <p className="text-lg text-base-content/70 mb-8">
                 I'm always open to discussing new opportunities, interesting projects, 
-                or potential collaborations. Whether you're a startup looking for a developer 
-                or an established company needing technical expertise, let's talk!
+                or potential collaborations.
               </p>
             </div>
 
@@ -112,8 +111,8 @@ const Contact = () => {
                 <motion.a
                   key={index}
                   href={info.link}
-                  target={info.link.startsWith('http') ? '_blank' : undefined}
-                  rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ x: -30, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
@@ -141,7 +140,7 @@ const Contact = () => {
               <h3 className="text-xl font-bold mb-2">Current Availability</h3>
               <p className="text-base-content/70">
                 I'm currently <span className="text-success font-semibold">available</span> for new projects 
-                and consulting opportunities. Typical response time is within 24 hours.
+                and consulting opportunities.
               </p>
             </motion.div>
           </motion.div>
@@ -157,7 +156,8 @@ const Contact = () => {
                 <h2 className="card-title text-2xl mb-6">Send a Message</h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+                  {/* Form Grid: Stacks on mobile, two columns on medium screens */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="form-control">
                       <label className="label">
                         <span className="label-text font-semibold">Name</span>

@@ -4,6 +4,9 @@ import { TypeAnimation } from 'react-type-animation';
 import { FiDownload, FiArrowRight, FiCode, FiVideo, FiHeart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
+// 1. Import the profile picture
+import profilePic from '../assets/profile.png'; // Make sure the path and filename are correct
+
 const Home = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -40,7 +43,8 @@ const Home = () => {
               className="mb-8"
             >
               <img
-                src="src/pages/Screenshot 2025-07-30 222038.png"
+                // 2. Use the imported variable for the image
+                src={profilePic}
                 alt="Profile"
                 className="w-32 h-32 rounded-full mx-auto mb-6 shadow-2xl ring-4 ring-primary/20"
               />
@@ -93,7 +97,8 @@ const Home = () => {
               </Link>
               
               <a
-                href="src/pages/Prashant__RES.pdf"
+                // 3. Use an absolute path for the resume in the public folder
+                href="/Prashant__RES.pdf" // Make sure the filename is correct
                 download
                 className="btn btn-outline btn-lg group"
               >
@@ -105,114 +110,10 @@ const Home = () => {
         </div>
       </motion.section>
 
-      {/* Quick Stats */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="py-20 bg-base-200"
-      >
-        <div className="container mx-auto px-4">
-          <div className="stats stats-vertical lg:stats-horizontal shadow-xl w-full">
-            <div className="stat">
-              <div className="stat-figure text-primary">
-                <FiCode className="w-8 h-8" />
-              </div>
-              <div className="stat-title">Projects Completed</div>
-              <div className="stat-value text-primary">2</div>
-              <div className="stat-desc">Full-stack applications</div>
-            </div>
-
-            <div className="stat">
-              <div className="stat-figure text-secondary">
-                <FiVideo className="w-8 h-8" />
-              </div>
-              <div className="stat-title">YouTube Subscribers</div>
-              <div className="stat-value text-secondary">132</div>
-              <div className="stat-desc">Tech Enthusiasts</div>
-            </div>
-
-            <div className="stat">
-              <div className="stat-figure text-accent">
-                <FiHeart className="w-8 h-8" />
-              </div>
-              <div className="stat-title">Experience</div>
-              <div className="stat-value text-accent">Learning</div>
-              <div className="stat-desc">Professional development</div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Featured Projects Preview */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-xl text-base-content/70 max-w-2xl mx-auto">
-              Here are some of my  projects in progress that showcase my skills in full-stack development go to view all project to see other projects
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1].map((index) => (
-              <motion.div
-                key={index}
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                <figure>
-                  <img
-                    src={`https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400`}
-                    alt="Project"
-                    className="w-full h-48 object-cover"
-                  />
-                </figure>
-                <div className="card-body">
-                  <h3 className="card-title">Project {index}</h3>
-                  <p>This Project is in progress and will be updated soon</p>
-                  <div className="card-actions justify-end">
-                    <div className="badge badge-primary">React</div>
-                    <div className="badge badge-secondary">Node.js</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <Link to="/projects" className="btn btn-primary btn-lg">
-              View All Projects
-              <FiArrowRight className="ml-2" />
-            </Link>
-          </motion.div>
-        </div>
-      </motion.section>
+      {/* ... (rest of your component code) ... */}
+      
     </div>
   );
 };
 
-export default Home; 
+export default Home;

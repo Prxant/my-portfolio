@@ -28,18 +28,24 @@ app.use('/api/', limiter);
 // server/server.js
 // server/server.js
 
+// server/server.js
+
+// --- CORS Configuration ---
+
+// Create a list of all allowed URLs
 const allowedOrigins = [
-  'http://localhost:5173', // This line allows your local testing
+  'http://localhost:5173',
   'http://localhost:3000',
-  'https://my-portfolio-ruby-beta-62.vercel.app' // This line allows your live site
+  'https://my-portfolio-ruby-beta-62.vercel.app' // Your live frontend URL
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
+    // Allow requests if the origin is in our list or if there's no origin (like for server-to-server requests)
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error('The CORS policy for this site does not allow access from the specified Origin.'));
     }
   },
   credentials: true

@@ -26,25 +26,25 @@ app.use('/api/', limiter);
 
 // CORS configuration
 // server/server.js
+// server/server.js
 
 const allowedOrigins = [
-  'http://localhost:5173', 
+  'http://localhost:5173', // This line allows your local testing
   'http://localhost:3000',
-  'https://my-portfolio-ruby-beta-62.vercel.app'
+  'https://my-portfolio-ruby-beta-62.vercel.app' // This line allows your live site
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
     }
-    return callback(null, true);
   },
   credentials: true
 }));
+
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));

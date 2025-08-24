@@ -27,7 +27,7 @@ app.use('/api/', limiter);
 // CORS configuration
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://my-portfolio-pfz4ejo0y-prxants-projects.vercel.app'] 
+    ? ['https://my-portfolio-ruby-beta-62.vercel.app'] 
     : ['http://localhost:5173', 'http://localhost:3000'],
   credentials: true
 }));

@@ -30,7 +30,11 @@ const Contact = () => {
 
     try {
       // Replace with your actual backend URL
-      const response = await axios.post('/api/contact', formData);
+     const response = await axios.post(
+  'https://portfolio-backend-9b8r.onrender.com/api/contact', // Use your live Render URL
+  formData
+);
+      
       
       if (response.data.success) {
         setStatus({

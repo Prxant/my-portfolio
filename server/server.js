@@ -50,14 +50,6 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Serve static files in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../dist')));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
-  });
-}
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -82,9 +74,8 @@ if (process.env.MONGODB_URI) {
     .catch(err => console.error('MongoDB connection error:', err));
 }
 
-app.listen(PORT, () => {
+// Add '0.0.0.0' to your app.listen call
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
-
 module.exports = app;

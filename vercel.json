@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!api|assets|resume.pdf|_next/static|static|favicon.ico|sw.js).*)",
       "destination": "/index.html"
     }
   ]
